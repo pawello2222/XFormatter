@@ -22,7 +22,7 @@
 
 import Foundation
 
-// MARK: - Currency
+// MARK: - Number Formatters
 
 extension XFormatter {
     public static func currency(
@@ -35,9 +35,24 @@ extension XFormatter {
             $0.defaultPrecision = .constant(2)
         }
     }
+
+    public static func decimal(locale: Locale = .current) -> XFormatter {
+        .init().apply {
+            $0.numberFormatter.numberStyle = .decimal
+            $0.numberFormatter.locale = locale
+        }
+    }
+
+    public static func percent(locale: Locale = .current) -> XFormatter {
+        .init().apply {
+            $0.numberFormatter.numberStyle = .percent
+            $0.numberFormatter.locale = locale
+            $0.numberFormatter.multiplier = 1
+        }
+    }
 }
 
-// MARK: - Date
+// MARK: - Date Formatters
 
 extension XFormatter {
     public static func date(
@@ -59,11 +74,7 @@ extension XFormatter {
             $0.dateFormatter.setLocalizedDateFormatFromTemplate(localizedFormat)
         }
     }
-}
 
-// MARK: - Date Components
-
-extension XFormatter {
     public static func dateComponents(
         locale: Locale = .current,
         allowedUnits: NSCalendar.Unit = [.hour, .minute, .second],
@@ -75,29 +86,6 @@ extension XFormatter {
             }
             $0.dateComponentsFormatter.allowedUnits = allowedUnits
             $0.dateComponentsFormatter.unitsStyle = unitsStyle
-        }
-    }
-}
-
-// MARK: - Decimal
-
-extension XFormatter {
-    public static func decimal(locale: Locale = .current) -> XFormatter {
-        .init().apply {
-            $0.numberFormatter.numberStyle = .decimal
-            $0.numberFormatter.locale = locale
-        }
-    }
-}
-
-// MARK: - Percent
-
-extension XFormatter {
-    public static func percent(locale: Locale = .current) -> XFormatter {
-        .init().apply {
-            $0.numberFormatter.numberStyle = .percent
-            $0.numberFormatter.locale = locale
-            $0.numberFormatter.multiplier = 1
         }
     }
 }

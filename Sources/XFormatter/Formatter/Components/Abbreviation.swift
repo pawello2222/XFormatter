@@ -36,7 +36,7 @@ extension XFormatter {
     }
 }
 
-// MARK: - Computed Properties
+// MARK: - Helpers
 
 extension XFormatter.Abbreviation {
     public var capitalized: Self {

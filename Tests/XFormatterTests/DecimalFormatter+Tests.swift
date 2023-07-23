@@ -192,10 +192,10 @@ class DecimalFormatterTests: XCTestCase {
 
     func test_shouldHaveCorrectDecimalSeparators() throws {
         let usFormatter = XFormatter.decimal(locale: Locale(identifier: "en_US"))
-        XCTAssertEqual(usFormatter.decimalSeparator, ".")
+        XCTAssertEqual(usFormatter.numberFormatter.decimalSeparator, ".")
 
         let plFormatter = XFormatter.decimal(locale: Locale(identifier: "pl_PL"))
-        XCTAssertEqual(plFormatter.decimalSeparator, ",")
+        XCTAssertEqual(plFormatter.numberFormatter.decimalSeparator, ",")
     }
 
     func test_shouldReadNumberFromString() throws {

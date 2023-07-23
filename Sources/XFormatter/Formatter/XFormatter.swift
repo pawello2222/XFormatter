@@ -22,12 +22,9 @@
 
 import Appliable
 import Foundation
-import PhantomKit
 
 /// A formatter that converts between numeric values and their textual representations.
 public class XFormatter: ObjectAppliable {
-    // MARK: Public Properties
-
     public var usesGroupingSeparator = false {
         didSet {
             numberFormatter.usesGroupingSeparator = usesGroupingSeparator
@@ -39,22 +36,18 @@ public class XFormatter: ObjectAppliable {
     public var usesSignForZero = false
     public var invalidValueString = "--"
 
-    // MARK: Internal Properties
+    // MARK: Formatters
 
-    internal var decimalSeparator: String {
-        numberFormatter.decimalSeparator
-    }
-
-    lazy var numberFormatter = NumberFormatter()
-    lazy var dateFormatter = DateFormatter()
-    lazy var dateComponentsFormatter = DateComponentsFormatter()
+    internal lazy var numberFormatter = NumberFormatter()
+    internal lazy var dateFormatter = DateFormatter()
+    internal lazy var dateComponentsFormatter = DateComponentsFormatter()
 
     // MARK: Initialization
 
     public init() {}
 }
 
-// MARK: - Format to Number
+// MARK: - Number Formatters
 
 extension XFormatter {
     public static var currency = currency()
@@ -63,6 +56,8 @@ extension XFormatter {
 
     public static var percent = percent()
 }
+
+// MARK: - Date Formatters
 
 extension XFormatter {
     public static var date = date(localizedFormat: "yyyyMMdd")
