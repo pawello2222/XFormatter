@@ -63,4 +63,12 @@ class DateComponentsFormatterTests: XCTestCase {
         let future = now.adjusting(\.minute, by: 5)
         XCTAssertEqual(usFormatter.string(from: now, to: future), "5 minutes")
     }
+
+    func test_invalidInput_shouldReturnInvalidValueString() throws {
+        let usFormatter = XDateFormatter.dateComponents(locale: .init(identifier: "en_US")).apply {
+            $0.dateComponentsFormatter.allowedUnits = [.timeZone]
+        }
+        let date = Date()
+        XCTAssertEqual(usFormatter.string(from: date, to: date), usFormatter.invalidValueString)
+    }
 }
