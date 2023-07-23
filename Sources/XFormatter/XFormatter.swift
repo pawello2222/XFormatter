@@ -56,42 +56,30 @@ public class XFormatter: ObjectAppliable {
 
 // MARK: - Format to Number
 
-
-
-// MARK: - Convenience
-
-extension XFormatter {
-    public static func currency(
-        locale: Locale = .current,
-        currencyCode: String = Locale.current.currency?.identifier ?? "USD"
-    ) -> XFormatter {
-        XFormatter().apply {
-            $0.formatter.numberStyle = .currency
-            $0.formatter.locale = .init(identifier: "\(locale.identifier)@currency=\(currencyCode)")
-            $0.defaultPrecision = .constant(2)
-        }
-    }
-
-    public static func decimal(locale: Locale = .current) -> XFormatter {
-        XFormatter().apply {
-            $0.formatter.numberStyle = .decimal
-            $0.formatter.locale = locale
-        }
-    }
-
-    public static func percent(locale: Locale = .current) -> XFormatter {
-        XFormatter().apply {
-            $0.formatter.numberStyle = .percent
-            $0.formatter.locale = locale
-            $0.formatter.multiplier = 1
-        }
-    }
-}
-
 extension XFormatter {
     public static var currency = currency()
 
     public static var decimal = decimal()
 
     public static var percent = percent()
+}
+
+extension XFormatter {
+    public static var date = date(localizedFormat: "yyyyMMdd")
+
+    public static var time = date(localizedFormat: "jjmmss")
+
+    public static var datetime = date(localizedFormat: "yyyyMMddjjmmss")
+
+    public static var dateComponents = dateComponents(
+        allowedUnits: [.year, .month, .day]
+    )
+
+    public static var timeComponents = dateComponents(
+        allowedUnits: [.hour, .minute, .second]
+    )
+
+    public static var datetimeComponents = dateComponents(
+        allowedUnits: [.year, .month, .day, .hour, .minute, .second]
+    )
 }

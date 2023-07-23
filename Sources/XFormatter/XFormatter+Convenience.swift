@@ -20,17 +20,31 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Appliable
 import Foundation
 
-// MARK: - Convenience
+// MARK: - Currency
+
+extension XFormatter {
+    public static func currency(
+        locale: Locale = .current,
+        currencyCode: String = Locale.current.currency?.identifier ?? "USD"
+    ) -> XFormatter {
+        .init().apply {
+            $0.formatter.numberStyle = .currency
+            $0.formatter.locale = .init(identifier: "\(locale.identifier)@currency=\(currencyCode)")
+            $0.defaultPrecision = .constant(2)
+        }
+    }
+}
+
+// MARK: - Date
 
 extension XFormatter {
     public static func date(
         locale: Locale = .current,
         format: String
     ) -> XFormatter {
-        XFormatter().apply {
+        .init().apply {
             $0.dateFormatter.locale = locale
             $0.dateFormatter.dateFormat = format
         }
@@ -40,18 +54,22 @@ extension XFormatter {
         locale: Locale = .current,
         localizedFormat: String = "yyyyMMdd"
     ) -> XFormatter {
-        XFormatter().apply {
+        .init().apply {
             $0.dateFormatter.locale = locale
             $0.dateFormatter.setLocalizedDateFormatFromTemplate(localizedFormat)
         }
     }
+}
 
+// MARK: - Date Components
+
+extension XFormatter {
     public static func dateComponents(
         locale: Locale = .current,
         allowedUnits: NSCalendar.Unit = [.hour, .minute, .second],
         unitsStyle: DateComponentsFormatter.UnitsStyle = .full
     ) -> XFormatter {
-        XFormatter().apply {
+        .init().apply {
             $0.dateComponentsFormatter.calendar = Calendar.current.applying {
                 $0.locale = locale
             }
@@ -61,30 +79,25 @@ extension XFormatter {
     }
 }
 
+// MARK: - Decimal
+
 extension XFormatter {
-    public static var date = date(localizedFormat: "yyyyMMdd")
-
-    public static var time = date(localizedFormat: "jjmmss")
-
-    public static var datetime = date(localizedFormat: "yyyyMMddjjmmss")
-
-    public static var dateComponents = dateComponents(
-        allowedUnits: [.year, .month, .day]
-    )
-
-    public static var timeComponents = dateComponents(
-        allowedUnits: [.hour, .minute, .second]
-    )
-
-    public static var datetimeComponents = dateComponents(
-        allowedUnits: [.year, .month, .day, .hour, .minute, .second]
-    )
+    public static func decimal(locale: Locale = .current) -> XFormatter {
+        .init().apply {
+            $0.formatter.numberStyle = .decimal
+            $0.formatter.locale = locale
+        }
+    }
 }
 
-// MARK: - Date
+// MARK: - Percent
 
-extension Date {
-    public func localizedString(formatter: XFormatter = .date) -> String {
-        formatter.string(from: self)
+extension XFormatter {
+    public static func percent(locale: Locale = .current) -> XFormatter {
+        .init().apply {
+            $0.formatter.numberStyle = .percent
+            $0.formatter.locale = locale
+            $0.formatter.multiplier = 1
+        }
     }
 }
