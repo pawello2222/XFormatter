@@ -23,50 +23,6 @@
 import Appliable
 import Foundation
 
-// MARK: - Format to Date
-
-extension XFormatter {
-    public func date(from string: String, timeZone: TimeZone? = nil) -> Date? {
-        with(timeZone: timeZone) {
-            dateFormatter.date(from: string)
-        }
-    }
-}
-
-// MARK: - Format to String
-
-extension XFormatter {
-    public func string(from date: Date) -> String {
-        dateFormatter.string(from: date)
-    }
-}
-
-extension XFormatter {
-    public func string(from dateComponents: DateComponents) -> String {
-        dateComponentsFormatter.string(from: dateComponents) ?? invalidValueString
-    }
-
-    public func string(fromTimeInterval timeInterval: TimeInterval) -> String {
-        dateComponentsFormatter.string(from: timeInterval) ?? invalidValueString
-    }
-
-    public func string(from startDate: Date, to endDate: Date) -> String {
-        dateComponentsFormatter.string(from: startDate, to: endDate) ?? invalidValueString
-    }
-}
-
-// MARK: - Helpers
-
-extension XFormatter {
-    private func with<T>(timeZone: TimeZone?, _ block: () -> T) -> T {
-        let existingTimeZone = dateFormatter.timeZone
-        dateFormatter.timeZone = timeZone
-        let result = block()
-        dateFormatter.timeZone = existingTimeZone
-        return result
-    }
-}
-
 // MARK: - Convenience
 
 extension XFormatter {

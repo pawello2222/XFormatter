@@ -206,7 +206,7 @@ class DecimalFormatterTests: XCTestCase {
         XCTAssertNil(usFormatter.number(from: "phantom-kit"))
 
         XCTAssertEqual(usFormatter.number(from: "123.321"), NSDecimalNumber(string: "123.321"))
-        XCTAssertEqual(usFormatter.decimalNumber(from: "123.321"), NSDecimalNumber(string: "123.321"))
-        XCTAssertNil(usFormatter.decimalNumber(from: "PhantomKit"))
+        XCTAssertEqual(usFormatter.decimal(from: "123.321"), NSDecimalNumber(string: "123.321"))
+        XCTAssertNil(usFormatter.decimal(from: "PhantomKit"))
     }
 }
