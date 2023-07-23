@@ -132,4 +132,4 @@ XCTAssertEqual(formatter.string(from: components), "16 hours, 14 minutes")
 
 ## License <a name="license"></a>
 
-PhantomKit is available under the MIT license. See the [LICENSE](./LICENSE.md) file for more info.
+XFormatter is available under the MIT license. See the [LICENSE](./LICENSE.md) file for more info.
