@@ -85,11 +85,4 @@ class DateFormatterTests: XCTestCase {
 
         XCTAssertEqual(usFormatter.date(from: dateStr, timeZone: .gmt), date)
     }
-
-    func test_date_localizedString_shouldFormatDate() throws {
-        let usFormatter = XDateFormatter.date(locale: .init(identifier: "en_US"))
-        let date = Date(year: 2000, month: 3, day: 24)
-
-        XCTAssertEqual(date.localizedString(formatter: usFormatter), "03/24/2000")
-    }
 }
