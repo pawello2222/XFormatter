@@ -161,6 +161,14 @@ class DecimalFormatterTests: XCTestCase {
         XCTAssertEqual(usFormatter.string(from: 0.123, precision: .constant(4)), "0.1230")
     }
 
+    func test_withUnlimitedPrecision_shouldFormatDecimals() throws {
+        let usFormatter = XFormatter.decimal(locale: Locale(identifier: "en_US")).apply {
+            $0.defaultPrecision = .init(minimum: nil, maximum: nil)
+        }
+        XCTAssertEqual(usFormatter.string(from: 0.123456789), "0.123456789")
+        XCTAssertEqual(usFormatter.string(from: 0.12), "0.12")
+    }
+
     func test_withAbbreviationAndSignAndPrecision_shouldFormatDecimals() throws {
         XCTAssertEqual(
             usFormatter.string(
