@@ -30,7 +30,7 @@ public class XFormatter: ObjectAppliable {
 
     public var usesGroupingSeparator = false {
         didSet {
-            formatter.usesGroupingSeparator = usesGroupingSeparator
+            numberFormatter.usesGroupingSeparator = usesGroupingSeparator
         }
     }
 
@@ -42,10 +42,10 @@ public class XFormatter: ObjectAppliable {
     // MARK: Internal Properties
 
     internal var decimalSeparator: String {
-        formatter.decimalSeparator
+        numberFormatter.decimalSeparator
     }
 
-    lazy var formatter = NumberFormatter()
+    lazy var numberFormatter = NumberFormatter()
     lazy var dateFormatter = DateFormatter()
     lazy var dateComponentsFormatter = DateComponentsFormatter()
 

@@ -30,8 +30,8 @@ extension XFormatter {
         currencyCode: String = Locale.current.currency?.identifier ?? "USD"
     ) -> XFormatter {
         .init().apply {
-            $0.formatter.numberStyle = .currency
-            $0.formatter.locale = .init(identifier: "\(locale.identifier)@currency=\(currencyCode)")
+            $0.numberFormatter.numberStyle = .currency
+            $0.numberFormatter.locale = .init(identifier: "\(locale.identifier)@currency=\(currencyCode)")
             $0.defaultPrecision = .constant(2)
         }
     }
@@ -84,8 +84,8 @@ extension XFormatter {
 extension XFormatter {
     public static func decimal(locale: Locale = .current) -> XFormatter {
         .init().apply {
-            $0.formatter.numberStyle = .decimal
-            $0.formatter.locale = locale
+            $0.numberFormatter.numberStyle = .decimal
+            $0.numberFormatter.locale = locale
         }
     }
 }
@@ -95,9 +95,9 @@ extension XFormatter {
 extension XFormatter {
     public static func percent(locale: Locale = .current) -> XFormatter {
         .init().apply {
-            $0.formatter.numberStyle = .percent
-            $0.formatter.locale = locale
-            $0.formatter.multiplier = 1
+            $0.numberFormatter.numberStyle = .percent
+            $0.numberFormatter.locale = locale
+            $0.numberFormatter.multiplier = 1
         }
     }
 }

@@ -27,7 +27,7 @@ import PhantomKit
 
 extension XFormatter {
     public func number(from string: String) -> NSNumber? {
-        formatter.number(from: string)
+        numberFormatter.number(from: string)
     }
 
     public func decimal(from string: String) -> NSDecimalNumber? {
@@ -142,7 +142,7 @@ extension XFormatter {
     }
 
     private func string(from value: NSDecimalNumber) -> String {
-        formatter.string(from: value) ?? invalidValueString
+        numberFormatter.string(from: value) ?? invalidValueString
     }
 }
 
@@ -150,46 +150,46 @@ extension XFormatter {
 
 extension XFormatter {
     private func with<T>(abbreviationSuffix: String, _ block: () -> T) -> T {
-        let existingPositiveSuffix = formatter.positiveSuffix
-        let existingNegativeSuffix = formatter.negativeSuffix
-        formatter.positiveSuffix = abbreviationSuffix + formatter.positiveSuffix
-        formatter.negativeSuffix = abbreviationSuffix + formatter.negativeSuffix
+        let existingPositiveSuffix = numberFormatter.positiveSuffix
+        let existingNegativeSuffix = numberFormatter.negativeSuffix
+        numberFormatter.positiveSuffix = abbreviationSuffix + numberFormatter.positiveSuffix
+        numberFormatter.negativeSuffix = abbreviationSuffix + numberFormatter.negativeSuffix
         let result = block()
-        formatter.positiveSuffix = existingPositiveSuffix
-        formatter.negativeSuffix = existingNegativeSuffix
+        numberFormatter.positiveSuffix = existingPositiveSuffix
+        numberFormatter.negativeSuffix = existingNegativeSuffix
         return result
     }
 
     private func with<T>(precision: Precision?, _ block: () -> T) -> T {
-        let existingMinimumFractionDigits = formatter.minimumFractionDigits
-        let existingMaximumFractionDigits = formatter.maximumFractionDigits
+        let existingMinimumFractionDigits = numberFormatter.minimumFractionDigits
+        let existingMaximumFractionDigits = numberFormatter.maximumFractionDigits
         let precision = precision ?? defaultPrecision
-        formatter.minimumFractionDigits = precision.minimum ?? 0
-        formatter.maximumFractionDigits = precision.maximum ?? maximumAllowedFractionDigits
+        numberFormatter.minimumFractionDigits = precision.minimum ?? 0
+        numberFormatter.maximumFractionDigits = precision.maximum ?? maximumAllowedFractionDigits
         let result = block()
-        formatter.minimumFractionDigits = existingMinimumFractionDigits
-        formatter.maximumFractionDigits = existingMaximumFractionDigits
+        numberFormatter.minimumFractionDigits = existingMinimumFractionDigits
+        numberFormatter.maximumFractionDigits = existingMaximumFractionDigits
         return result
     }
 
     private func with<T>(sign: Sign, _ block: () -> T) -> T {
-        let existingPositivePrefix = formatter.positivePrefix
-        let existingNegativePrefix = formatter.negativePrefix
+        let existingPositivePrefix = numberFormatter.positivePrefix
+        let existingNegativePrefix = numberFormatter.negativePrefix
 
         var newPlusSign: String
         switch sign.plus {
         case .none:
             newPlusSign = ""
         case .localized:
-            newPlusSign = formatter.plusSign
+            newPlusSign = numberFormatter.plusSign
         case .custom(let plusSign):
             newPlusSign = plusSign
         }
-        if formatter.positivePrefix.contains(formatter.plusSign) {
-            formatter.positivePrefix = formatter.positivePrefix
-                .replacingOccurrences(of: formatter.plusSign, with: newPlusSign)
+        if numberFormatter.positivePrefix.contains(numberFormatter.plusSign) {
+            numberFormatter.positivePrefix = numberFormatter.positivePrefix
+                .replacingOccurrences(of: numberFormatter.plusSign, with: newPlusSign)
         } else {
-            formatter.positivePrefix = newPlusSign + formatter.positivePrefix
+            numberFormatter.positivePrefix = newPlusSign + numberFormatter.positivePrefix
         }
 
         var newMinusSign: String
@@ -197,26 +197,26 @@ extension XFormatter {
         case .none:
             newMinusSign = ""
         case .localized:
-            newMinusSign = formatter.minusSign
+            newMinusSign = numberFormatter.minusSign
         case .custom(let minusSign):
             newMinusSign = minusSign
         }
-        if formatter.negativePrefix.contains(formatter.minusSign) {
-            formatter.negativePrefix = formatter.negativePrefix
-                .replacingOccurrences(of: formatter.minusSign, with: newMinusSign)
+        if numberFormatter.negativePrefix.contains(numberFormatter.minusSign) {
+            numberFormatter.negativePrefix = numberFormatter.negativePrefix
+                .replacingOccurrences(of: numberFormatter.minusSign, with: newMinusSign)
         } else {
-            formatter.negativePrefix = newMinusSign + formatter.negativePrefix
+            numberFormatter.negativePrefix = newMinusSign + numberFormatter.negativePrefix
         }
 
         let result = block()
 
-        formatter.positivePrefix = existingPositivePrefix
-        formatter.negativePrefix = existingNegativePrefix
+        numberFormatter.positivePrefix = existingPositivePrefix
+        numberFormatter.negativePrefix = existingNegativePrefix
         return result
     }
 
     private func with<T>(zeroSign: Sign.Style, _ block: () -> T) -> T {
-        let existingPositivePrefix = formatter.positivePrefix
+        let existingPositivePrefix = numberFormatter.positivePrefix
 
         var newZeroSign: String
         switch zeroSign {
@@ -225,11 +225,11 @@ extension XFormatter {
         default:
             newZeroSign = ""
         }
-        formatter.positivePrefix = newZeroSign + formatter.positivePrefix
+        numberFormatter.positivePrefix = newZeroSign + numberFormatter.positivePrefix
 
         let result = block()
 
-        formatter.positivePrefix = existingPositivePrefix
+        numberFormatter.positivePrefix = existingPositivePrefix
         return result
     }
 }
