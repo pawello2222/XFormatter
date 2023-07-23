@@ -12,6 +12,11 @@
     <img src="https://img.shields.io/badge/language-swift-orange.svg" alt="Language">
   </a>
   <a href="https://github.com/pawello2222/XFormatter#installation">
+    <img src="https://img.shields.io/badge/platform-iOS%20%7C%20macOS%20%7C%20watchOS%20%7C%20tvOS-lightgrey.svg" alt="Supported platforms">
+  </a>
+</p>
+<p align="center">
+  <a href="https://github.com/pawello2222/XFormatter#installation">
     <img src="https://img.shields.io/badge/SPM-compatible-brightgreen.svg" alt="Swift Package Manager">
   </a>
   <a href="https://github.com/pawello2222/XFormatter/releases">
@@ -24,7 +29,7 @@
 
 # XFormatter
 
-XFormatter (eXtended Formatter) provides localized strings from numbers, currencies, dates and more.
+XFormatter (e**X**tended **Formatter**) creates localized strings from numbers, currencies, dates and more.
 
 <details>
   <summary>
@@ -42,6 +47,8 @@ XFormatter (eXtended Formatter) provides localized strings from numbers, currenc
 ### Requirements
 * iOS 16.0+
 * macOS 13.0+
+* watchOS 9.0+
+* tvOS 16.0+
 
 ### Swift Package Manager
 
@@ -107,7 +114,7 @@ let formatter = XDateFormatter.dateComponents(
 )
 
 let now = Date()
-let future = now.adjusting(.day, by: 2)
+let future = now.adjusting(\.day, by: 2)
 
 XCTAssertEqual(formatter.string(from: now, to: future), "48 hours")
 ```

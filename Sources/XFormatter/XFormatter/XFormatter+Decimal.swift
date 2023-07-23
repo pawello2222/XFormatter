@@ -109,22 +109,21 @@ extension XFormatter {
         } else {
             roundedValue = value
         }
-        guard roundedValue != .zero else {
-            if usesSignForZero {
-                return with(zeroSign: sign.zero) {
-                    with(precision: precision) {
-                        string(from: roundedValue)
-                    }
-                }
-            } else {
-                return with(precision: precision) {
-                    string(from: roundedValue)
+        guard roundedValue == .zero else {
+            return with(sign: sign) {
+                with(precision: precision) {
+                    abbreviatedString(from: value, abbreviation: abbreviation)
                 }
             }
         }
-        return with(sign: sign) {
+        guard usesSignForZero else {
+            return with(precision: precision) {
+                string(from: roundedValue)
+            }
+        }
+        return with(zeroSign: sign.zero) {
             with(precision: precision) {
-                abbreviatedString(from: value, abbreviation: abbreviation)
+                string(from: roundedValue)
             }
         }
     }
