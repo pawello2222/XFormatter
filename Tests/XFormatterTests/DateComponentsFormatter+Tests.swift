@@ -21,7 +21,7 @@
 // SOFTWARE.
 
 import XCTest
-@testable import PhantomKit
+@testable import XFormatter
 
 class DateComponentsFormatterTests: XCTestCase {
     func test_shouldFormatTimeInterval() throws {
@@ -39,7 +39,7 @@ class DateComponentsFormatterTests: XCTestCase {
     func test_shouldFormatDateFromTo() throws {
         let usFormatter = XFormatter.dateComponents(locale: .init(identifier: "en_US"))
         let now = Date()
-        let future = now.adjusting(.minute, by: 5)
+        let future = now.adjusting(\.minute, by: 5)
         XCTAssertEqual(usFormatter.string(from: now, to: future), "5 minutes")
     }
 
@@ -53,14 +53,14 @@ class DateComponentsFormatterTests: XCTestCase {
     func test_withUnitsDate_shouldFormatDateFromTo() throws {
         let usFormatter = XFormatter.dateComponents(locale: .init(identifier: "en_US"))
         let now = Date()
-        XCTAssertEqual(usFormatter.string(from: now, to: now.adjusting(.day, by: 2)), "48 hours")
-        XCTAssertEqual(usFormatter.string(from: now, to: now.adjusting(.minute, by: 5)), "5 minutes")
+        XCTAssertEqual(usFormatter.string(from: now, to: now.adjusting(\.day, by: 2)), "48 hours")
+        XCTAssertEqual(usFormatter.string(from: now, to: now.adjusting(\.minute, by: 5)), "5 minutes")
     }
 
     func test_withUnitsDatetime_shouldFormatDateFromTo() throws {
         let usFormatter = XFormatter.dateComponents(locale: .init(identifier: "en_US"))
         let now = Date()
-        let future = now.adjusting(.minute, by: 5)
+        let future = now.adjusting(\.minute, by: 5)
         XCTAssertEqual(usFormatter.string(from: now, to: future), "5 minutes")
     }
 }

@@ -22,6 +22,7 @@
 
 import Appliable
 import Foundation
+import PhantomKit
 
 /// A formatter that converts between numeric values and their textual representations.
 public class XFormatter: ObjectAppliable {

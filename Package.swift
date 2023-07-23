@@ -15,12 +15,12 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(url: "https://github.com/pawello2222/Appliable", from: "1.0.0")
+        .package(url: "https://github.com/pawello2222/PhantomKit", from: "1.0.0")
     ],
     targets: [
         .target(
             name: "XFormatter",
-            dependencies: ["Appliable"]
+            dependencies: ["PhantomKit"]
         ),
         .testTarget(
             name: "XFormatterTests",

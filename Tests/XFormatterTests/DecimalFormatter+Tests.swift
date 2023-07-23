@@ -21,7 +21,7 @@
 // SOFTWARE.
 
 import XCTest
-@testable import PhantomKit
+@testable import XFormatter
 
 class DecimalFormatterTests: XCTestCase {
     let usFormatter = XFormatter.decimal(locale: .init(identifier: "en_US"))

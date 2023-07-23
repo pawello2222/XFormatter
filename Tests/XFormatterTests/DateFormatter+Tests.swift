@@ -21,7 +21,7 @@
 // SOFTWARE.
 
 import XCTest
-@testable import PhantomKit
+@testable import XFormatter
 
 class DateFormatterTests: XCTestCase {
     func test_shouldFormatDate() throws {

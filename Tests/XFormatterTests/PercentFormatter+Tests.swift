@@ -21,7 +21,7 @@
 // SOFTWARE.
 
 import XCTest
-@testable import PhantomKit
+@testable import XFormatter
 
 class PercentFormatterTests: XCTestCase {
     private let usFormatter = XFormatter.percent(locale: .init(identifier: "en_US"))

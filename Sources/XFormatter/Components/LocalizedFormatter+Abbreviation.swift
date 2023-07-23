@@ -21,6 +21,7 @@
 // SOFTWARE.
 
 import Foundation
+import PhantomKit
 
 extension XFormatter {
     public struct Abbreviation {

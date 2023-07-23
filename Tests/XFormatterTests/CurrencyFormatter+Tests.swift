@@ -21,7 +21,7 @@
 // SOFTWARE.
 
 import XCTest
-@testable import PhantomKit
+@testable import XFormatter
 
 class CurrencyFormatterTests: XCTestCase {
     private let usFormatter = XFormatter.currency(
