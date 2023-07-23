@@ -23,7 +23,8 @@
 import Appliable
 import Foundation
 
-/// A formatter that converts between numeric values and their textual representations.
+/// A formatter that converts between dates and their textual representations
+/// or creates string representations of quantities of time.
 public class XDateFormatter: ObjectAppliable {
     public var invalidValueString = "--"
 
