@@ -46,7 +46,10 @@ extension XDateFormatter {
     }
 
     public func string(fromTimeInterval timeInterval: TimeInterval) -> String {
-        dateComponentsFormatter.string(from: timeInterval) ?? invalidValueString
+        guard !timeInterval.isNaN, timeInterval.isFinite else {
+            return invalidValueString
+        }
+        return dateComponentsFormatter.string(from: timeInterval) ?? invalidValueString
     }
 
     public func string(from startDate: Date, to endDate: Date) -> String {

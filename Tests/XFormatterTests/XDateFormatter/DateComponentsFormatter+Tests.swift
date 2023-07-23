@@ -64,11 +64,22 @@ class DateComponentsFormatterTests: XCTestCase {
         XCTAssertEqual(usFormatter.string(from: now, to: future), "5 minutes")
     }
 
+    func test_invalidAllowedUnits_shouldBeSanitized() throws {
+        let usFormatter = XDateFormatter.dateComponents(
+            locale: .init(identifier: "en_US"),
+            allowedUnits: [.timeZone, .calendar, .day]
+        )
+        let now = Date()
+        let future = now.adjusting(\.minute, by: 1)
+        XCTAssertEqual(usFormatter.string(from: now, to: future), "0 days")
+    }
+
     func test_invalidInput_shouldReturnInvalidValueString() throws {
-        let usFormatter = XDateFormatter.dateComponents(locale: .init(identifier: "en_US")).apply {
-            $0.dateComponentsFormatter.allowedUnits = [.timeZone]
-        }
-        let date = Date()
-        XCTAssertEqual(usFormatter.string(from: date, to: date), usFormatter.invalidValueString)
+        let usFormatter = XDateFormatter.dateComponents(
+            locale: .init(identifier: "en_US"),
+            allowedUnits: [.weekOfYear]
+        )
+        XCTAssertEqual(usFormatter.string(from: DateComponents()), usFormatter.invalidValueString)
+        XCTAssertEqual(usFormatter.string(fromTimeInterval: .infinity), usFormatter.invalidValueString)
     }
 }

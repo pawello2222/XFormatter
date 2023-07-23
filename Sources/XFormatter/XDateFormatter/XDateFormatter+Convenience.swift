@@ -58,8 +58,16 @@ extension XDateFormatter {
             $0.dateComponentsFormatter.calendar = Calendar.current.applying {
                 $0.locale = locale
             }
-            $0.dateComponentsFormatter.allowedUnits = allowedUnits
+            $0.dateComponentsFormatter.allowedUnits = allowedUnits.intersection(Self.allowedUnits)
             $0.dateComponentsFormatter.unitsStyle = unitsStyle
         }
     }
+}
+
+// MARK: - Helpers
+
+extension XDateFormatter {
+    private static let allowedUnits: NSCalendar.Unit = [
+        .year, .month, .weekOfMonth, .day, .hour, .minute, .second
+    ]
 }
