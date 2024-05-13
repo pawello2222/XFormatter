@@ -2,29 +2,15 @@
   <img src=".resources/Assets/logo.png" alt="XFormatter logo" height=150>
 </p>
 <p align="center">
-  <a href="https://github.com/pawello2222/XFormatter/actions?query=branch%3Amain">
-    <img src="https://img.shields.io/github/actions/workflow/status/pawello2222/XFormatter/ci.yml?logo=github" alt="Build">
-  </a>
-  <a href="https://codecov.io/gh/pawello2222/XFormatter">
-    <img src="https://codecov.io/gh/pawello2222/XFormatter/branch/main/graph/badge.svg?token=EYQ7VExCll" alt="Code coverage">
-  </a>
-  <a href="https://github.com/pawello2222/XFormatter">
-    <img src="https://img.shields.io/badge/language-swift-orange.svg" alt="Language">
-  </a>
-  <a href="https://github.com/pawello2222/XFormatter#installation">
-    <img src="https://img.shields.io/badge/platform-iOS%20%7C%20macOS%20%7C%20watchOS%20%7C%20tvOS-lightgrey.svg" alt="Supported platforms">
-  </a>
+  <a href="https://github.com/pawello2222/XFormatter/actions?query=branch%3Amain"><img src="https://img.shields.io/github/actions/workflow/status/pawello2222/XFormatter/ci.yml?logo=github" alt="Build"></a>
+  <a href="https://codecov.io/gh/pawello2222/XFormatter"><img src="https://codecov.io/gh/pawello2222/XFormatter/branch/main/graph/badge.svg?token=EYQ7VExCll" alt="Code coverage"></a>
+  <a href="https://github.com/pawello2222/XFormatter"><img src="https://img.shields.io/badge/language-swift-orange.svg" alt="Language"></a>
+  <a href="https://github.com/pawello2222/XFormatter#installation"><img src="https://img.shields.io/badge/platform-iOS%20%7C%20macOS%20%7C%20watchOS%20%7C%20tvOS-lightgrey.svg" alt="Supported platforms"></a>
 </p>
 <p align="center">
-  <a href="https://github.com/pawello2222/XFormatter#installation">
-    <img src="https://img.shields.io/badge/SPM-compatible-brightgreen.svg" alt="Swift Package Manager">
-  </a>
-  <a href="https://github.com/pawello2222/XFormatter/releases">
-    <img src="https://img.shields.io/github/v/release/pawello2222/XFormatter" alt="Release version">
-  </a>
-  <a href="https://github.com/pawello2222/XFormatter/blob/main/LICENSE.md">
-    <img src="https://img.shields.io/github/license/pawello2222/XFormatter" alt="License">
-  </a>
+  <a href="https://github.com/pawello2222/XFormatter#installation"><img src="https://img.shields.io/badge/SPM-compatible-brightgreen.svg" alt="Swift Package Manager"></a>
+  <a href="https://github.com/pawello2222/XFormatter/releases"><img src="https://img.shields.io/github/v/release/pawello2222/XFormatter" alt="Release version"></a>
+  <a href="https://github.com/pawello2222/XFormatter/blob/main/LICENSE.md"><img src="https://img.shields.io/github/license/pawello2222/XFormatter" alt="License"></a>
 </p>
 
 # XFormatter
