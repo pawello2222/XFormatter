@@ -41,6 +41,8 @@ class DateComponentsFormatterTests: XCTestCase {
         let now = Date()
         let future = now.adjusting(\.minute, by: 5)
         XCTAssertEqual(usFormatter.string(from: now, to: future), "5 minutes")
+        let past = now.adjusting(\.minute, by: -5)
+        XCTAssertEqual(usFormatter.string(from: now, to: past), "-5 minutes")
     }
 
     func test_shouldFormatDateComponents() throws {
