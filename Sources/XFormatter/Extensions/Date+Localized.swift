@@ -26,8 +26,4 @@ extension Date {
     public func localizedString(formatter: XDateFormatter = .date) -> String {
         formatter.string(from: self)
     }
-
-    public func localizedString2(formatter: XDateFormatter = .date) -> String {
-        formatter.string(from: self)
-    }
 }
