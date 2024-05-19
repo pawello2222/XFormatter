@@ -1,14 +1,14 @@
-// swift-tools-version: 5.7
+// swift-tools-version: 5.9
 
 import PackageDescription
 
 let package = Package(
     name: "XFormatter",
     platforms: [
-        .iOS(.v16),
-        .macOS(.v13),
-        .watchOS(.v9),
-        .tvOS(.v16)
+        .iOS(.v17),
+        .macOS(.v14),
+        .watchOS(.v10),
+        .tvOS(.v17)
     ],
     products: [
         .library(
@@ -18,7 +18,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/pawello2222/Appliable", from: "1.0.0"),
-        .package(url: "https://github.com/pawello2222/PhantomKit", from: "1.0.0")
+        .package(url: "https://github.com/pawello2222/PhantomKit", from: "2.0.0")
     ],
     targets: [
         .target(
